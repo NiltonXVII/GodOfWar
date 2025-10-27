@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>God of War - A Saga Completa</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Inter:wght@300;400;700&display=swap"
+          rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --cor-gow-vermelho: #ef4444;
+            --cor-gow-vermelho-escuro: #b91c1c;
+            --cor-gow-ouro: #f59e0b;
+            --cor-gow-escuro: #0a0a0a;
+            --cor-gow-claro: #e5e5e5;
+
+            /* Efeitos de brilho */
+            --brilho-ouro: 0 0 15px rgba(245, 158, 11, 0.5), 0 0 5px rgba(245, 158, 11, 0.8);
+            --brilho-vermelho: 0 0 15px rgba(239, 68, 68, 0.5), 0 0 5px rgba(185, 28, 28, 0.8);
+        }
+
+        body {
+            background-color: var(--cor-gow-escuro);
+            color: var(--cor-gow-claro);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            /* Textura de fundo sutil */
+            background-image: url('https://www.transparenttextures.com/patterns/dark-noise.png');
+        }
+
+        .fonte_cinzel {
+            font-family: 'Cinzel Decorative', cursive;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .fundo_alternado_escuro {
+            background-color: transparent; /* Usa o fundo texturizado do body */
+            position: relative;
+        }
+
+        .fundo_alternado_claro {
+            background-color: var(--cor-gow-claro);
+        }
+
+        .fundo_alternado_vermelho {
+            background-color: var(--cor-gow-vermelho-escuro);
+            background-image: url('https://www.transparenttextures.com/patterns/concrete-wall.png');
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--cor-gow-vermelho-escuro);
+            border-radius: 5px;
+            border: 1px solid #333;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--cor-gow-vermelho);
+            box-shadow: var(--brilho-vermelho);
+        }
+
+        .navbar_vidro {
+            background-color: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        #topo_sony {
+            height: 48px;
+        }
+
+        #cabecalho_principal {
+            top: 48px;
+        }
+
+        @media (max-width: 767px) {
+            #cabecalho_principal {
+                top: 0;
+            }
+
+            main {
+                padding-top: 80px; /* Adjusted padding for main content on mobile */
+            }
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--cor-gow-ouro);
+            transition: width 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+            box-shadow: var(--brilho-ouro);
+        }
+
+        .nav-link.active, .nav-link:hover {
+            color: var(--cor-gow-ouro) !important;
+            text-shadow: var(--brilho-ouro);
+        }
+
+        .slide {
+            transition: opacity 1s ease-in-out;
+        }
+
+        div.slide {
+            background-size: cover !important;
+            background-position: center center !important;
+        }
+
+        video.slide {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #secao_heroi::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
+            z-index: 1;
+        }
+
+
+        #conteudo_slide {
+            justify-content: flex-end !important;
+            padding-bottom: 8rem;
+            z-index: 2;
+        }
+
+        #conteudo_slide h1, #conteudo_slide p {
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .revelar {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .revelar.visivel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .titulo_secao {
+            position: relative;
+            margin-bottom: 4rem;
+            text-align: center;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--cor-gow-ouro);
+            font-family: 'Cinzel Decorative', cursive;
+            /* Efeito de brasa/fogo no texto */
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--cor-gow-ouro), 0 0 20px var(--cor-gow-ouro), 0 0 25px var(--cor-gow-ouro), 0 0 30px var(--cor-gow-vermelho), 0 0 35px var(--cor-gow-vermelho);
+            animation: flicker-text 3s infinite linear;
+        }
+
+        @keyframes flicker-text {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: 0 0 4px #fff,
+                0 0 11px #fff,
+                0 0 19px var(--cor-gow-ouro),
+                0 0 40px var(--cor-gow-ouro),
+                0 0 80px var(--cor-gow-vermelho),
+                0 0 90px var(--cor-gow-vermelho);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+
+
+        .titulo_secao::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--cor-gow-vermelho-escuro), var(--cor-gow-vermelho), var(--cor-gow-vermelho-escuro), transparent);
+            margin: 1.5rem auto 0;
+            box-shadow: var(--brilho-vermelho);
+            animation: pulse-line 2.5s infinite ease-in-out;
+        }
+
+        .fundo_alternado_claro .titulo_secao {
+            color: var(--cor-gow-escuro);
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            animation: none;
+        }
+
+        .fundo_alternado_claro .titulo_secao::after {
+            background: linear-gradient(90deg, transparent, #888, transparent);
+            box-shadow: none;
+            animation: none;
+        }
+
+
+        @keyframes pulse-line {
+            0%, 100% {
+                opacity: 0.7;
+                transform: scaleX(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scaleX(1.15);
+            }
+        }
+
+        .card_jogo {
+            background-color: #f8f9fa;
+            border: 2px solid transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-image 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .card_jogo:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-image: linear-gradient(45deg, var(--cor-gow-ouro), var(--cor-gow-vermelho)) 1;
+        }
+
+        .card_jogo .card-img-top {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .card_jogo .card-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card_jogo .card-title {
+            color: var(--cor-gow-escuro);
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .card_jogo .card-text {
+            flex-grow: 1;
+            color: #6c757d;
+        }
+
+        .menu_mobile_oculto, .menu_mobile_conteudo {
+            transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .menu_mobile_oculto {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1050;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .menu_mobile_oculto.visivel {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .menu_mobile_conteudo {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 66.66%;
+            max-width: 320px;
+            height: 100%;
+            background-color: var(--cor-gow-escuro);
+            padding: 1.5rem;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu_mobile_oculto.visivel .menu_mobile_conteudo {
+            right: 0;
+        }
+
+        .link_menu_mobile {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.75rem;
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .link_menu_mobile:hover {
+            color: var(--cor-gow-vermelho);
+            text-shadow: var(--brilho-vermelho);
+        }
+
+
+        .container_linha_tempo {
+            position: relative;
+            max-width: 800px;
+            padding: 2rem 0;
+        }
+
+        .container_linha_tempo::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, transparent, var(--cor-gow-vermelho), transparent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+            animation: glow-line 2s infinite;
+        }
+
+        @keyframes glow-line {
+            0% {
+                box-shadow: 0 0 5px var(--cor-gow-vermelho);
+            }
+            50% {
+                box-shadow: 0 0 20px var(--cor-gow-vermelho);
+            }
+            100% {
+                box-shadow: 0 0 5px var(--cor-gow-vermelho);
+            }
+        }
+
+        .item_timeline {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .item_timeline.esquerda {
+            left: 0;
+        }
+
+        .item_timeline.direita {
+            left: 50%;
+        }
+
+        .item_timeline::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--cor-gow-escuro);
+            border: 4px solid var(--cor-gow-ouro);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .item_timeline.direita::after {
+            left: -10px;
+        }
+
+        .item_timeline:hover::after {
+            transform: scale(1.3);
+            box-shadow: var(--brilho-ouro);
+        }
+
+        .conteudo_timeline {
+            padding: 20px 30px;
+            background-color: #fff;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            color: var(--cor-gow-escuro);
+        }
+
+        .item_timeline.esquerda .conteudo_timeline {
+            text-align: right;
+        }
+
+        .conteudo_timeline h3 {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--cor-gow-vermelho-escuro);
+        }
+
+        .conteudo_timeline h4 {
+            font-weight: bold;
+        }
+
+        .accordion-button {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--cor-gow-ouro);
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #212529;
+            color: var(--cor-gow-ouro);
+            box-shadow: inset 0 -1px 0 rgba(245, 158, 11, 0.2);
+        }
+
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(245, 158, 11, 0.25);
+        }
+
+        .accordion-item {
+            background-color: #1a1a1a;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-body {
+            color: #adb5bd;
+        }
+
+        #botao_voltar_topo {
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            z-index: 1000;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        #botao_voltar_topo:hover {
+            background-color: var(--cor-gow-ouro);
+            box-shadow: var(--brilho-ouro);
+        }
+
+        /* --- ESTILOS DO MODAL DE AUTENTICAÇÃO --- */
+        #modal_autenticacao .modal-dialog {
+            filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.4));
+        }
+
+        #modal_autenticacao .modal-content {
+            background-color: #0c0c0c;
+            border: 2px solid var(--cor-gow-ouro);
+            overflow: hidden; /* Changed to hidden for clip-path to work well */
+            border-radius: 0;
+            clip-path: polygon(0% 30px, 30px 0%, 100% 0%, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0% 100%);
+        }
+
+        .modal_imagem_lateral {
+            background-image: linear-gradient(to right, rgba(12, 12, 12, 0.9), rgba(12, 12, 12, 0.5)), url('assets/img/logo_god.jpg');
+            background-size: cover;
+            background-position: center;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+        }
+
+        #modal_autenticacao .form-control {
+            background-color: #1a1a1a;
+            border: 1px solid #444;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            color: #fff;
+            border-radius: 0;
+        }
+
+        #modal_autenticacao .form-control:focus {
+            background-color: #212121;
+            border-color: var(--cor-gow-ouro);
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+
+        #modal_autenticacao .form-control::placeholder {
+            color: #6c757d;
+        }
+
+        #modal_autenticacao .input-group-text {
+            background-color: #1a1a1a;
+            border-color: #444;
+            color: var(--cor-gow-ouro);
+            border-radius: 0;
+        }
+
+        #modal_autenticacao .btn-danger {
+            background-color: var(--cor-gow-vermelho-escuro);
+            border: none;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            border-radius: 0;
+        }
+
+        #modal_autenticacao .btn-danger:hover {
+            background-color: var(--cor-gow-vermelho);
+            transform: scale(1.02);
+            box-shadow: var(--brilho-vermelho);
+        }
+
+        #modal_autenticacao .modal-body a {
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        #modal_autenticacao .modal-body a:hover {
+            color: #ffc107;
+            text-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+        }
+
+        @keyframes pulse-success {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* --- ESTILOS DO MODAL DE DETALHES DO JOGO --- */
+        .modal_jogo_conteudo {
+            background-color: #0a0a0a;
+            background-image: url('https://www.transparenttextures.com/patterns/dark-noise.png');
+            border: 2px solid rgba(245, 158, 11, 0.5);
+            box-shadow: var(--brilho-ouro);
+        }
+
+        .modal_jogo_conteudo .modal-header {
+            border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .modal_jogo_conteudo .coluna_info {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 1px solid rgba(245, 158, 11, 0.3);
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+
+        #abas_info_jogo .nav-link {
+            color: #a0a0a0;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        #abas_info_jogo .nav-link.active {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-color: var(--cor-gow-ouro);
+            color: var(--cor-gow-ouro);
+            text-shadow: var(--brilho-ouro);
+        }
+
+        .card_item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .card_item img, .card_item .icone_placeholder {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .card_item .icone_placeholder {
+            display: grid;
+            place-items: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            font-size: 1.5rem;
+            color: var(--cor-gow-ouro);
+        }
+
+        .card_item h5 {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--cor-gow-ouro);
+            margin-bottom: 0.25rem;
+        }
+
+        .card_item p {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#menu_principal">
+
+<!-- Barra Superior SONY -->
+<div id="topo_sony"
+     class="bg-black text-white py-2 px-4 d-none d-md-flex justify-content-between align-items-center small fixed-top border-bottom">
+    <div class="d-flex align-items-center">
+        <a href="#" class="fw-bolder text-lg text-decoration-none text-white me-4">SONY</a>
+        <div class="d-flex align-items-center gap-3">
+            <a href="#" class="text-secondary text-decoration-none hover-link"><i class="fa-solid fa-gamepad me-1"></i>
+                Jogos</a>
+            <a href="#" class="text-secondary text-decoration-none hover-link"><i
+                    class="fa-solid fa-microchip me-1"></i> Hardware</a>
+            <a href="#" class="text-secondary text-decoration-none hover-link"><i class="fa-solid fa-cloud me-1"></i>
+                Serviços</a>
+            <a href="#" class="text-secondary text-decoration-none hover-link"><i
+                    class="fa-solid fa-newspaper me-1"></i> Notícias</a>
+        </div>
+    </div>
+    <div class="d-flex align-items-center gap-3">
+        <a href="#rodape" class="text-secondary text-decoration-none hover-link"><i
+                class="fa-solid fa-universal-access me-1"></i> Acessibilidade</a>
+        <div id="componente_busca" class="d-flex align-items-center">
+            <div class="position-relative d-none" id="container_barra_busca">
+                <input type="search" placeholder="Buscar..."
+                       class="form-control form-control-sm rounded-pill bg-dark text-white border-warning">
+                <button id="botao_fechar_busca"
+                        class="btn btn-sm text-secondary position-absolute end-0 top-50 translate-middle-y">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <button id="botao_icone_busca" class="btn text-secondary fs-5"><i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+        <button id="botao_login" class="btn btn-secondary btn-sm rounded-pill"><i class="fa-solid fa-user me-1"></i>
+            Iniciar Sessão
+        </button>
+    </div>
+</div>
+
+<!-- Cabeçalho Principal -->
+<header id="cabecalho_principal" class="navbar_vidro fixed-top">
+    <nav class="container d-flex justify-content-between align-items-center px-3 py-3">
+        <a href="#" class="d-flex align-items-center text-decoration-none">
+            <span class="fonte_cinzel text-white fs-4" style="letter-spacing: 2px;">GOD OF WAR</span>
+        </a>
+
+        <div id="menu_principal" class="d-none d-md-flex gap-4">
+            <a href="#intro" class="nav-link text-light text-uppercase small">A Saga</a>
+            <a href="#catalogo" class="nav-link text-light text-uppercase small">Jogos</a>
+            <a href="#linha_tempo" class="nav-link text-light text-uppercase small">Linha do Tempo</a>
+            <a href="#pc" class="nav-link text-light text-uppercase small">PC</a>
+            <a href="#dlcs" class="nav-link text-light text-uppercase small">DLCs</a>
+            <a href="#comunidade" class="nav-link text-light text-uppercase small">Comunidade</a>
+            <a href="#faq" class="nav-link text-light text-uppercase small">FAQ</a>
+        </div>
+
+        <div class="d-md-none">
+            <button id="botao_menu_mobile" class="btn text-white">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<!-- Menu Mobile -->
+<div id="menu_mobile" class="menu_mobile_oculto">
+    <div class="menu_mobile_conteudo">
+        <div class="d-flex justify-content-end mb-5">
+            <button id="botao_fechar_menu" class="btn-close btn-close-white fs-4"></button>
+        </div>
+        <nav class="d-flex flex-column gap-4 text-center">
+            <a href="#intro" class="link_menu_mobile">A Saga</a>
+            <a href="#catalogo" class="link_menu_mobile">Jogos</a>
+            <a href="#linha_tempo" class="link_menu_mobile">Linha do Tempo</a>
+            <a href="#pc" class="link_menu_mobile">PC</a>
+            <a href="#dlcs" class="link_menu_mobile">DLCs</a>
+            <a href="#comunidade" class="link_menu_mobile">Comunidade</a>
+            <a href="#faq" class="link_menu_mobile">FAQ</a>
+        </nav>
+    </div>
+</div>
+
+<main id="conteudo_principal">
+    <!-- Seção Herói (Estática) -->
+    <section id="secao_heroi" class="position-relative vh-100 text-white overflow-hidden">
+        <div id="container_slide" class="position-absolute top-0 start-0 w-100 h-100"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-50"></div>
+        <div id="conteudo_slide"
+             class="position-relative h-100 d-flex flex-column justify-content-center align-items-center text-center p-4"></div>
+    </section>
+
+    <!-- Seção Intro -->
+    <section id="intro" class="py-5 fundo_alternado_escuro">
+        <div class="container px-4">
+            <h2 class="titulo_secao revelar">A Fúria de um Homem, O Legado de um Deus</h2>
+            <div class="row align-items-center g-5">
+                <div class="col-md-6 revelar">
+                    <img src="assets/img/god_of_war.jpg" alt="Kratos" class="img-fluid rounded-3 shadow-lg">
+                </div>
+                <div class="col-md-6 revelar fs-5">
+                    <p class="mb-4 text-white-50 lh-base">
+                        A saga God of War narra a jornada trágica e brutal de Kratos, um guerreiro espartano que,
+                        enganado por Ares, assassina sua família. Consumido pela vingança, ele se lança em uma guerra
+                        contra o panteão grego, do Submundo ao Monte Olimpo.
+                    </p>
+                    <p class="text-white-50 lh-base">
+                        Anos depois, nas terras nórdicas com seu filho Atreus, Kratos busca redenção. É uma segunda
+                        chance de ser pai, enquanto deuses e monstros testam sua capacidade de controlar a fúria e
+                        quebrar as correntes do passado.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Catálogo de Jogos -->
+    <section id="catalogo" class="py-5 fundo_alternado_claro">
+        <div class="container px-4">
+            <h2 class="titulo_secao revelar text-dark">A Saga Completa</h2>
+            <div class="row g-4 justify-content-center">
+                <!-- Cards dos Jogos serão inseridos pelo JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Linha do Tempo -->
+    <section id="linha_tempo" class="py-5 fundo_alternado_escuro">
+        <div class="container px-4">
+            <h2 class="titulo_secao revelar">A Linha do Tempo de Kratos</h2>
+            <div class="container_linha_tempo mx-auto" id="container_linha_tempo">
+                <!-- Itens da Linha do Tempo serão inseridos pelo JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção PC -->
+    <section id="pc" class="py-5 fundo_alternado_escuro">
+        <div class="container px-4">
+            <div class="row g-5 align-items-start">
+                <div class="col-lg-6 revelar">
+                    <h2 class="titulo_secao text-start ms-0 mb-4"><i class="fa-brands fa-steam me-3"></i>God of War no
+                        PC</h2>
+                    <p class="fs-5 text-white-50 lh-base mb-4">
+                        A jornada aclamada de Kratos e Atreus chega ao PC com fidelidade visual aprimorada, resolução
+                        4K, taxas de quadros desbloqueadas e suporte para ultra-widescreen 21:9 para uma experiência
+                        cinematográfica.
+                    </p>
+                    <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg">
+                        <video src="assets/videos/video_god_of_war.webm" autoplay loop muted playsinline
+                               class="w-100 h-100 object-cover"></video>
+                    </div>
+                </div>
+                <div class="col-lg-6 revelar">
+                    <h3 class="fonte_cinzel fs-2 text-warning mb-4 text-center"><i class="fa-solid fa-gears me-2"></i>Requisitos
+                        de Sistema</h3>
+                    <div class="row g-3 small">
+                        <div class="col-sm-6">
+                            <div class="bg-dark p-3 rounded-3 border h-100"><h4 class="fw-bold text-warning">Mínimo
+                                (720p)</h4>
+                                <ul class="list-unstyled text-white-50">
+                                    <li><i class="fa-solid fa-microchip me-2"></i><strong>CPU:</strong> i5-4460 / Ryzen
+                                        5 1400
+                                    </li>
+                                    <li><i class="fa-solid fa-gamepad me-2"></i><strong>GPU:</strong> GTX 1060 / RX 5500
+                                        XT
+                                    </li>
+                                    <li><i class="fa-solid fa-memory me-2"></i><strong>RAM:</strong> 8 GB</li>
+                                    <li><i class="fa-solid fa-hard-drive me-2"></i><strong>Armazenamento:</strong> 90 GB
+                                        HDD
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="bg-dark p-3 rounded-3 border h-100"><h4 class="fw-bold text-warning">Recomendado
+                                (1080p)</h4>
+                                <ul class="list-unstyled text-white-50">
+                                    <li><i class="fa-solid fa-microchip me-2"></i><strong>CPU:</strong> i5-8400 / Ryzen
+                                        5 3600
+                                    </li>
+                                    <li><i class="fa-solid fa-gamepad me-2"></i><strong>GPU:</strong> RTX 2070 / RX 6600
+                                        XT
+                                    </li>
+                                    <li><i class="fa-solid fa-memory me-2"></i><strong>RAM:</strong> 16 GB</li>
+                                    <li><i class="fa-solid fa-hard-drive me-2"></i><strong>Armazenamento:</strong> 90 GB
+                                        SSD
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="bg-dark p-3 rounded-3 border h-100"><h4 class="fw-bold text-warning">Alto
+                                (1440p)</h4>
+                                <ul class="list-unstyled text-white-50">
+                                    <li><i class="fa-solid fa-microchip me-2"></i><strong>CPU:</strong> i7-9700K / Ryzen
+                                        7 3700X
+                                    </li>
+                                    <li><i class="fa-solid fa-gamepad me-2"></i><strong>GPU:</strong> RTX 3070 / RX 6800
+                                    </li>
+                                    <li><i class="fa-solid fa-memory me-2"></i><strong>RAM:</strong> 16 GB</li>
+                                    <li><i class="fa-solid fa-hard-drive me-2"></i><strong>Armazenamento:</strong> 90 GB
+                                        SSD
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="bg-dark p-3 rounded-3 border h-100"><h4 class="fw-bold text-warning">Ultra
+                                (4K)</h4>
+                                <ul class="list-unstyled text-white-50">
+                                    <li><i class="fa-solid fa-microchip me-2"></i><strong>CPU:</strong> i9-11900K /
+                                        Ryzen 9 5900X
+                                    </li>
+                                    <li><i class="fa-solid fa-gamepad me-2"></i><strong>GPU:</strong> RTX 4080 / RX 7900
+                                        XTX
+                                    </li>
+                                    <li><i class="fa-solid fa-memory me-2"></i><strong>RAM:</strong> 32 GB</li>
+                                    <li><i class="fa-solid fa-hard-drive me-2"></i><strong>Armazenamento:</strong> 90 GB
+                                        SSD
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://store.steampowered.com/app/1593500/God_of_War/" target="_blank"
+                       rel="noopener noreferrer" class="btn btn-danger w-100 mt-4 fonte_cinzel fs-5">
+                        <i class="fa-brands fa-steam me-2"></i>Comprar na Steam
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Aniversário -->
+    <section id="aniversario" class="py-5 text-center fundo_alternado_vermelho">
+        <div class="container px-4 revelar">
+            <h2 class="titulo_secao">Um Legado de Batalhas</h2>
+            <p class="fs-5 text-light mx-auto mb-4" style="max-width: 800px;">
+                Desde 2005, a saga God of War tem redefinido o gênero de ação, cativando milhões com sua narrativa,
+                combate e personagens inesquecíveis. Celebramos quase duas décadas de Kratos. Obrigado por fazer parte
+                desta história.
+            </p>
+            <img src="assets/img/god_desenho.jpg" class="img-fluid rounded-3 shadow-lg mx-auto"
+                 style="max-width: 900px;" alt="Legado de Kratos">
+        </div>
+    </section>
+
+    <!-- Seção DLCs -->
+    <section id="dlcs" class="py-5 fundo_alternado_escuro">
+        <div class="container px-4">
+            <div class="row g-5 align-items-center">
+                <div class="col-md-6 order-md-2 revelar">
+                    <h2 class="titulo_secao text-start ms-0 mb-4">DLC Gratuita: Valhalla</h2>
+                    <p class="fs-5 text-white-50 lh-base mb-4">
+                        Acompanhe Kratos em uma jornada pessoal e reflexiva em Valhalla, um epílogo de God of War
+                        Ragnarök. Enfrente desafios da mente e do corpo em uma aventura roguelite que combina o combate
+                        que você já conhece com elementos inéditos.
+                    </p>
+                </div>
+                <div class="col-md-6 order-md-1 revelar">
+                    <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg">
+                        <img src="assets/img/vahanla.jpg" class="w-100 h-100 object-cover" alt="DLC Valhalla"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Comunidade -->
+    <section id="comunidade" class="py-5 text-center fundo_alternado_claro">
+        <div class="container px-4 revelar">
+            <h2 class="titulo_secao text-dark"><i class="fa-solid fa-users me-3"></i>Junte-se à Nossa Comunidade</h2>
+            <p class="fs-5 text-secondary mx-auto mb-4" style="max-width: 800px;">
+                Compartilhe suas melhores jogadas, artes de fã e teorias. Siga-nos nas redes sociais e faça parte da
+                legião de fãs de God of War.
+            </p>
+            <div class="d-flex justify-content-center gap-4 mt-4">
+                <a href="#" class="text-secondary fs-1"><i class="fab fa-playstation"></i></a>
+                <a href="#" class="text-secondary fs-1"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-secondary fs-1"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="text-secondary fs-1"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção FAQ -->
+    <section id="faq" class="py-5 fundo_alternado_escuro">
+        <div class="container px-4">
+            <h2 class="titulo_secao revelar"><i class="fa-solid fa-circle-question me-3"></i>Perguntas Frequentes</h2>
+            <div class="accordion mx-auto revelar" id="acordeao_faq" style="max-width: 900px;">
+                <!-- Itens do Acordeon serão inseridos pelo JS -->
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Modal de Detalhes do Jogo -->
+<div class="modal fade" id="modal_detalhes_jogo" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content modal_jogo_conteudo">
+            <div class="modal-header border-0">
+                <h2 id="modal_titulo_jogo" class="modal-title fonte_cinzel text-warning"></h2>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="container-fluid">
+                    <div class="row g-0">
+                        <!-- Coluna do Video -->
+                        <div class="col-lg-7">
+                            <div class="ratio ratio-16x9" id="container_trailer">
+                                <!-- Video tag será inserido aqui pelo JS -->
+                            </div>
+                        </div>
+                        <!-- Coluna de Informações -->
+                        <div class="col-lg-5 p-4 coluna_info">
+                            <ul class="nav nav-pills nav-fill mb-4" id="abas_info_jogo" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active fonte_cinzel" id="aba_sinopse"
+                                            data-bs-toggle="pill" data-bs-target="#conteudo_sinopse" type="button"
+                                            role="tab" aria-controls="conteudo_sinopse" aria-selected="true">Sinopse
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link fonte_cinzel" id="aba_arsenal" data-bs-toggle="pill"
+                                            data-bs-target="#conteudo_arsenal" type="button" role="tab"
+                                            aria-controls="conteudo_arsenal" aria-selected="false">Arsenal
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link fonte_cinzel" id="aba_personagens"
+                                            data-bs-toggle="pill" data-bs-target="#conteudo_personagens" type="button"
+                                            role="tab" aria-controls="conteudo_personagens" aria-selected="false">
+                                        Personagens
+                                    </button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="conteudo_abas_info_jogo">
+                                <div class="tab-pane fade show active" id="conteudo_sinopse" role="tabpanel"
+                                     aria-labelledby="aba_sinopse">
+                                    <p class="text-white-50" id="modal_sinopse_jogo"></p>
+                                </div>
+                                <div class="tab-pane fade" id="conteudo_arsenal" role="tabpanel"
+                                     aria-labelledby="aba_arsenal">
+                                    <div id="modal_arsenal_jogo" class="d-grid gap-3"></div>
+                                </div>
+                                <div class="tab-pane fade" id="conteudo_personagens" role="tabpanel"
+                                     aria-labelledby="aba_personagens">
+                                    <div id="modal_personagens_jogo" class="d-grid gap-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Autenticação -->
+<div class="modal fade" id="modal_autenticacao" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="row g-0">
+                <div class="col-md-6 d-none d-md-block modal_imagem_lateral"></div>
+                <div class="col-md-6">
+                    <div class="modal-body p-4 p-lg-5">
+                        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3"
+                                data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div id="container_form_login">
+                            <h3 class="fonte_cinzel fs-2 text-warning mb-4 text-center"><i
+                                    class="fa-solid fa-right-to-bracket me-2"></i>Iniciar Sessão</h3>
+                            <form action="#" class="d-grid gap-3 text-start needs-validation" novalidate>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                                    <input type="email" id="login_email" class="form-control" placeholder="Email"
+                                           required>
+                                    <div class="invalid-feedback">Por favor, insira um email válido.</div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                                    <input type="password" id="login_senha" class="form-control" placeholder="Senha"
+                                           required>
+                                    <div class="invalid-feedback">Por favor, insira sua senha.</div>
+                                </div>
+                                <button type="submit" class="btn btn-danger fonte_cinzel w-100 py-2 mt-2">Entrar
+                                </button>
+                            </form>
+                            <p class="small text-white-50 mt-4 text-center">Não tem uma conta? <a href="#"
+                                                                                                  id="link_mostrar_cadastro"
+                                                                                                  class="text-warning fw-semibold">Cadastre-se</a>
+                            </p>
+                        </div>
+                        <div id="container_form_cadastro" class="d-none">
+                            <h3 class="fonte_cinzel fs-2 text-warning mb-4 text-center"><i
+                                    class="fa-solid fa-user-plus me-2"></i>Criar Conta</h3>
+                            <form action="#" class="d-grid gap-3 text-start needs-validation" novalidate>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                                    <input type="email" id="cadastro_email" class="form-control" placeholder="Email"
+                                           required>
+                                    <div class="invalid-feedback">Por favor, insira um email válido.</div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                                    <input type="password" id="cadastro_senha" class="form-control"
+                                           placeholder="Crie uma senha forte" required minlength="6">
+                                    <div class="invalid-feedback">A senha deve ter no mínimo 6 caracteres.</div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-solid fa-check-double"></i></span>
+                                    <input type="password" id="cadastro_confirma_senha" class="form-control"
+                                           placeholder="Confirme sua senha" required>
+                                    <div class="invalid-feedback">As senhas não coincidem.</div>
+                                </div>
+                                <button type="submit" class="btn btn-danger fonte_cinzel w-100 py-2 mt-2">Cadastrar
+                                </button>
+                            </form>
+                            <p class="small text-white-50 mt-4 text-center">Já tem uma conta? <a href="#"
+                                                                                                 id="link_mostrar_login"
+                                                                                                 class="text-warning fw-semibold">Faça
+                                login</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rodapé -->
+<footer id="rodape" class="bg-black text-white-50 pt-5 pb-4">
+    <div class="container px-4">
+        <div class="row g-4">
+            <div class="col-md-4 col-lg-2">
+                <h4 class="fonte_cinzel text-warning mb-3">O Jogo</h4>
+                <ul class="list-unstyled d-grid gap-2">
+                    <li><a href="#intro" class="nav-link text-white-50 p-0">A Saga</a></li>
+                    <li><a href="#catalogo" class="nav-link text-white-50 p-0">Jogos</a></li>
+                    <li><a href="#pc" class="nav-link text-white-50 p-0">PC</a></li>
+                    <li><a href="#faq" class="nav-link text-white-50 p-0">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 col-lg-2">
+                <h4 class="fonte_cinzel text-warning mb-3">PlayStation</h4>
+                <ul class="list-unstyled d-grid gap-2">
+                    <li><a href="#" class="nav-link text-white-50 p-0">Página Oficial</a></li>
+                    <li><a href="#" class="nav-link text-white-50 p-0">PS Store</a></li>
+                    <li><a href="#" class="nav-link text-white-50 p-0">PS Plus</a></li>
+                    <li><a href="#" class="nav-link text-white-50 p-0">Hardware PS5</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 col-lg-2">
+                <h4 class="fonte_cinzel text-warning mb-3">Legal</h4>
+                <ul class="list-unstyled d-grid gap-2">
+                    <li><a href="#" class="nav-link text-white-50 p-0">Termos de Serviço</a></li>
+                    <li><a href="#" class="nav-link text-white-50 p-0">Política de Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-6 text-center text-lg-end">
+                <h4 class="fonte_cinzel text-warning mb-3">Conecte-se</h4>
+                <div class="d-flex justify-content-center justify-content-lg-end gap-3">
+                    <a href="#" class="text-white-50 fs-4"><i class="fab fa-playstation"></i></a>
+                    <a href="#" class="text-white-50 fs-4"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white-50 fs-4"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="border-secondary my-4">
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-between small">
+            <p class="text-center text-md-start mb-3 mb-md-0">&copy; 2025 Sony Interactive Entertainment LLC. God of War
+                é uma marca registrada. Projeto de fã sem fins lucrativos.</p>
+            <div class="d-flex align-items-center gap-3">
+                <div class="text-end">
+                    <span class="fonte_cinzel text-white">SANTA MONICA</span>
+                    <span class="d-block small text-white-50" style="letter-spacing: 2px;">STUDIO</span>
+                </div>
+                <i class="fab fa-playstation fs-2 text-white"></i>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Botão Voltar ao Topo -->
+<a href="#" id="botao_voltar_topo" class="btn btn-warning rounded-circle position-fixed bottom-0 end-0 m-3 d-none"
+   title="Voltar ao topo">
+    <i class="fas fa-arrow-up"></i>
+</a>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script>
+    $(function () {
+        // --- DADOS ---
+        const dados_catalogo_jogos = [
+            {
+                img: 'assets/img/god_of_war_1.png',
+                alt: 'Capa de God of War (2005)',
+                titulo: 'God of War (2005)',
+                desc: 'A jornada de vingança de Kratos começa aqui, onde o Fantasma de Esparta desafia Ares, o Deus da Guerra.',
+                preco: 'Disponível no PS Plus',
+                videoFile: 'assets/videos/God Of Wa Saga.mp4',
+                sinopseCompleta: 'No primeiro capítulo da saga, Kratos, um temido guerreiro espartano, é levado a serviço de Ares. Enganado pelo deus para assassinar sua própria família, ele se torna o "Fantasma de Esparta", amaldiçoado a usar as cinzas de sua esposa e filha em sua pele. Sua busca por absolvição o transforma em uma busca por vingança contra Ares, uma jornada que o levará das profundezas do Hades ao Templo de Pandora sobre o Titã Cronos.',
+                arsenal: [
+                    {
+                        nome: 'Lâminas do Caos',
+                        descricao: 'Armas icônicas de Kratos, presenteadas por Ares. Lâminas presas a correntes que se fundem aos seus braços.',
+                        icone: 'fa-solid fa-fire-flame-curved'
+                    },
+                    {
+                        nome: 'Lâmina de Artemis',
+                        descricao: 'Uma grande e poderosa espada que pertenceu à Deusa da Caça, capaz de causar dano massivo.',
+                        icone: 'fa-solid fa-gavel'
+                    }
+                ],
+                personagens: [
+                    {
+                        nome: 'Ares',
+                        img: 'https://placehold.co/60x60/b91c1c/FFFFFF?text=A',
+                        desc: 'O Deus da Guerra e o principal antagonista, que manipula Kratos para seus próprios fins destrutivos.'
+                    },
+                    {
+                        nome: 'Atena',
+                        img: 'https://placehold.co/60x60/DAA520/FFFFFF?text=A',
+                        desc: 'A Deusa da Sabedoria e a principal aliada de Kratos, guiando-o em sua missão para derrotar Ares.'
+                    }
+                ]
+            },
+            {
+                img: 'assets/img/god_of_war_2.png',
+                alt: 'Capa de God of War II',
+                titulo: 'God of War II',
+                desc: 'Traído por Zeus, Kratos une forças com os Titãs para desafiar o Rei do Olimpo e alterar seu destino mortal.',
+                preco: 'Disponível no PS Plus',
+                videoFile: 'assets/videos/God Of Wa Saga.mp4',
+                sinopseCompleta: 'Após se tornar o novo Deus da Guerra, Kratos é temido e odiado pelos outros deuses. Traído e morto por Zeus, ele é resgatado pela Titã Gaia. Para reescrever seu destino, Kratos deve encontrar as Irmãs do Destino e usar o poder delas para voltar no tempo e enfrentar o próprio Rei do Olimpo. Sua jornada o coloca contra heróis e monstros da mitologia grega em uma escala ainda maior.',
+                arsenal: [
+                    {
+                        nome: 'Lâminas de Atena',
+                        descricao: 'Versão aprimorada das Lâminas do Caos, concedidas a Kratos após ele se tornar o Deus da Guerra.',
+                        icone: 'fa-solid fa-fire-flame-curved'
+                    },
+                    {
+                        nome: 'Lança do Destino',
+                        descricao: 'Uma lança que pode se estender, disparar projéteis e criar explosões, retirada de um grifo.',
+                        icone: 'fa-solid fa-staff-snake'
+                    }
+                ],
+                personagens: [
+                    {
+                        nome: 'Zeus',
+                        img: 'https://placehold.co/60x60/C0C0C0/000000?text=Z',
+                        desc: 'O Rei dos Deuses do Olimpo, que trai Kratos por medo de uma profecia, tornando-se o antagonista central.'
+                    },
+                    {
+                        nome: 'Gaia',
+                        img: 'https://placehold.co/60x60/228B22/FFFFFF?text=G',
+                        desc: 'A mãe dos Titãs e a narradora da história, que se torna uma poderosa aliada de Kratos contra os deuses.'
+                    }
+                ]
+            },
+            {
+                img: 'assets/img/chains_of_olympus.jpg',
+                alt: 'Capa de Chains of Olympus',
+                titulo: 'Chains of Olympus',
+                desc: 'Descubra os dias sombrios de Kratos como campeão dos deuses, lutando para salvar o mundo da escuridão.',
+                preco: 'Disponível no PS Plus',
+                videoFile: 'assets/videos/God Of Wa Saga.mp4',
+                sinopseCompleta: 'Servindo aos deuses por dez anos, Kratos é enviado para proteger a Ática de um exército persa. No entanto, ele testemunha o sol cair do céu, mergulhando o mundo na escuridão. Kratos descobre que o deus do sol, Hélio, foi sequestrado. Ele deve viajar para o Submundo para enfrentar a deusa Perséfone, que planeja usar o poder de Hélio para destruir o pilar que sustenta o mundo e, com ele, o Olimpo.',
+                arsenal: [
+                    {
+                        nome: 'Manopla de Zeus',
+                        descricao: 'Uma poderosa manopla de metal que aumenta a força dos socos de Kratos.',
+                        icone: 'fa-solid fa-hand-fist'
+                    },
+                    {
+                        nome: 'Escudo do Sol',
+                        descricao: 'O escudo de Hélio, capaz de refletir projéteis e realizar um contra-ataque poderoso.',
+                        icone: 'fa-solid fa-shield'
+                    }
+                ],
+                personagens: [
+                    {
+                        nome: 'Perséfone',
+                        img: 'https://placehold.co/60x60/330033/FFFFFF?text=P',
+                        desc: 'A Rainha do Submundo, amargurada com sua prisão e traição por parte dos deuses.'
+                    },
+                    {
+                        nome: 'Hélio',
+                        img: 'https://placehold.co/60x60/ffcc00/000000?text=H',
+                        desc: 'O Deus do Sol, cujo sequestro mergulha o mundo em trevas e ameaça a existência.'
+                    }
+                ]
+            },
+            {
+                img: 'assets/img/god_3.jpg',
+                alt: 'Capa de God of War III',
+                titulo: 'God of War III',
+                desc: 'Kratos enfrenta as criaturas mais sombrias da mitologia grega para destruir o Olimpo e o próprio Zeus.',
+                preco: 'R$ 99,50',
+                videoFile: 'assets/videos/God Of War III.mp4',
+                sinopseCompleta: 'A saga de vingança de Kratos chega ao seu clímax épico. Montado em Gaia, Kratos lidera os Titãs em um ataque total ao Monte Olimpo. Traído novamente, ele cai no Submundo, mas retorna mais furioso do que nunca, armado com as Lâminas do Exílio. Sua missão é simples: matar Zeus. Para isso, ele deve aniquilar o que resta do panteão grego, usando suas armas e poderes para mergulhar o mundo no caos absoluto.',
+                arsenal: [
+                    {
+                        nome: 'Lâminas do Exílio',
+                        descricao: 'Forjadas pela alma de Atena, são a arma principal de Kratos em sua guerra final contra o Olimpo.',
+                        icone: 'fa-solid fa-fire-flame-curved'
+                    },
+                    {
+                        nome: 'Cestus de Nemeia',
+                        descricao: 'Manoplas brutais em forma de cabeça de leão, capazes de quebrar ônix e desferir golpes devastadores.',
+                        icone: 'fa-solid fa-hand-fist'
+                    }
+                ],
+                personagens: [
+                    {
+                        nome: 'Hades',
+                        img: 'https://placehold.co/60x60/550000/FFFFFF?text=H',
+                        desc: 'O Senhor do Submundo, que busca vingança contra Kratos pela morte de sua esposa Perséfone e sua sobrinha Atena.'
+                    },
+                    {
+                        nome: 'Hércules',
+                        img: 'https://placehold.co/60x60/808080/FFFFFF?text=H',
+                        desc: 'O meio-irmão de Kratos, consumido pelo ciúme e ansioso para superar o Fantasma de Esparta como o campeão do Olimpo.'
+                    }
+                ]
+            },
+            {
+                img: 'assets/img/god-of-war-ghost-of-sparta.webp',
+                alt: 'Capa de Ghost of Sparta',
+                titulo: 'Ghost of Sparta',
+                desc: 'Explore o passado de Kratos e sua família em uma jornada para encontrar seu irmão perdido, Deimos.',
+                preco: 'Disponível no PS Plus',
+                videoFile: 'assets/videos/God Of Wa Saga.mp4',
+                sinopseCompleta: 'Assombrado por visões de seu passado, Kratos, agora o Deus da Guerra, desafia o aviso de Atena e viaja para a cidade perdida de Atlântida. Sua busca é por seu irmão, Deimos, que foi levado em sua infância pelos deuses Ares e Atena devido a uma profecia. A jornada de Kratos o leva a confrontar sua própria mãe e, finalmente, a enfrentar o deus da morte, Tânato, para salvar Deimos e descobrir a verdade sobre a cicatriz em seu olho.',
+                arsenal: [
+                    {
+                        nome: 'Armas de Esparta',
+                        descricao: 'A lança e o escudo clássicos dos guerreiros espartanos, usados com precisão mortal.',
+                        icone: 'fa-solid fa-shield-halved'
+                    },
+                    {
+                        nome: 'Flagelo de Erínias',
+                        descricao: 'Um poder sombrio concedido pela filha de Tânato, que permite a Kratos criar vórtices de energia.',
+                        icone: 'fa-solid fa-hurricane'
+                    }
+                ],
+                personagens: [
+                    {
+                        nome: 'Deimos',
+                        img: 'https://placehold.co/60x60/b91c1c/FFFFFF?text=D',
+                        desc: 'O irmão mais novo de Kratos, torturado por anos no Domínio da Morte por Tânato.'
+                    },
+                    {
+                        nome: 'Tânato',
+                        img: 'https://placehold.co/60x60/000000/FFFFFF?text=T',
+                        desc: 'O Deus da Morte e o principal vilão, que reside em seu domínio e detém Deimos como prisioneiro.'
+                    }
+                ]
+            },
+            {
+                img: 'assets/img/god_an_v2.jpg',
+                alt: 'Capa de God of War: Ascension',
+                titulo: 'God of War: Ascension',
+                desc: 'Antes de ser um deus, ele era um homem. Descubra as origens de Kratos e sua fúria lendária contra as Fúrias.',
+                preco: 'Disponível no PS Plus',
+                videoFile: 'assets/videos/God_Of_War_Ascension.mp4',
+                sinopseCompleta: 'Seis meses após ser enganado por Ares para matar sua família, Kratos quebra seu juramento de sangue com o deus. Por este ato, ele é sentenciado a uma eternidade de tormento pelas Fúrias, as guardiãs da honra. Preso e enlouquecido, Kratos deve superar sua própria insanidade, derrotar as Fúrias e lutar por sua liberdade, marcando o início de sua jornada de vingança e o nascimento de sua lenda.',
+                arsenal: [
+                    {
+                        nome: 'Lâminas do Caos (Origem)',
+                        descricao: 'Veja as Lâminas em seus primeiros dias, com novas habilidades de imbuir elementos como fogo e gelo.',
+                        icone: 'fa-solid fa-fire-flame-curved'
+                    },
+                    {
+                        nome: 'Ciclo da Vida',
+                        descricao: 'Um artefato que permite a Kratos manipular o tempo, reconstruindo ou decaindo estruturas.',
+                        icone: 'fa-solid fa-hourglass-half'
+                    }
+                ],
+                personagens: [
+                    {
+                        nome: 'As Fúrias',
+                        img: 'https://placehold.co/60x60/4b0082/FFFFFF?text=F',
+                        desc: 'Trio de seres primordiais (Megera, Tisífone e Alecto) que punem aqueles que quebram juramentos aos deuses.'
+                    },
+                    {
+                        nome: 'Orkos',
+                        img: 'https://placehold.co/60x60/808080/FFFFFF?text=O',
+                        desc: 'O Guardião do Juramento das Fúrias, que ajuda Kratos em sua busca por liberdade.'
+                    }
+                ]
+            },
+            {
+                img: 'assets/img/god_capa.jpg',
+                alt: 'Capa de God of War (2018)',
+                titulo: 'God of War (2018)',
+                desc: 'Fora da sombra dos deuses, Kratos se aventura pelas selvagens terras nórdicas com seu filho Atreus.',
+                preco: 'R$ 99,50',
+                videoFile: 'assets/videos/video_god_of_war.webm',
+                sinopseCompleta: 'Anos após sua guerra contra o Olimpo, Kratos vive uma vida reclusa no reino nórdico de Midgard. Após a morte de sua segunda esposa, Faye, ele e seu filho, Atreus, embarcam em uma jornada para espalhar suas cinzas no pico mais alto de todos os reinos. Esta jornada perigosa força Kratos a confrontar seu passado, controlar sua raiva e, finalmente, abraçar seu papel como pai, enquanto enfrenta os deuses e monstros do panteão nórdico.',
+                arsenal: [
+                    {
+                        nome: 'Machado Leviatã',
+                        descricao: 'Uma arma mágica forjada pelos anões Brok e Sindri que retorna à mão de Kratos após ser arremessada.',
+                        icone: 'fa-solid fa-axe'
+                    },
+                    {
+                        nome: 'Escudo do Guardião',
+                        descricao: 'Um escudo retrátil no braço esquerdo de Kratos, usado para bloquear e contra-atacar.',
+                        icone: 'fa-solid fa-shield-halved'
+                    }
+                ],
+                personagens: [
+                    {
+                        nome: 'Atreus',
+                        img: 'https://placehold.co/60x60/006400/FFFFFF?text=A',
+                        desc: 'Filho de Kratos e Faye. Luta ao lado do pai com seu arco e flecha, aprendendo a sobreviver e a controlar sua natureza divina.'
+                    },
+                    {
+                        nome: 'Baldur',
+                        img: 'https://placehold.co/60x60/ADD8E6/000000?text=B',
+                        desc: 'O deus nórdico do Aesir, filho de Odin e Freya. Amaldiçoado com a invulnerabilidade, ele não pode sentir nada, o que o enlouquece.'
+                    }
+                ]
+            },
+            {
+                img: 'assets/img/god.jpeg',
+                alt: 'Capa de God of War Ragnarök',
+                titulo: 'God of War Ragnarök',
+                desc: 'Kratos e Atreus devem viajar pelos Nove Reinos em busca de respostas enquanto o Ragnarök se aproxima.',
+                preco: 'R$ 349,90',
+                videoFile: 'assets/videos/video_god_of_war.webm',
+                sinopseCompleta: 'Com o Fimbulwinter chegando ao fim, Kratos e Atreus se encontram no centro da profecia do Ragnarök. Atreus, agora um adolescente, busca conhecimento sobre sua identidade como Loki. Pai e filho devem viajar por todos os Nove Reinos para encontrar respostas e, possivelmente, uma maneira de evitar o fim do mundo, enquanto as forças de Asgard, lideradas por Thor e Odin, se preparam para a guerra. É um conflito de destino versus livre arbítrio, onde Kratos deve decidir se permanecerá acorrentado ao medo de repetir seus erros ou se libertará para ser o pai que Atreus precisa.',
+                arsenal: [
+                    {
+                        nome: 'Lança Draupnir',
+                        descricao: 'Uma lança mágica que pode se multiplicar infinitamente e ser detonada à distância.',
+                        icone: 'fa-solid fa-staff-snake'
+                    },
+                    {
+                        nome: 'Lâminas do Caos (Nórdica)',
+                        descricao: 'As armas do passado de Kratos retornam, essenciais para combater inimigos de gelo e dominar o campo de batalha.',
+                        icone: 'fa-solid fa-fire-flame-curved'
+                    }
+                ],
+                personagens: [
+                    {
+                        nome: 'Thor',
+                        img: 'https://placehold.co/60x60/00008B/FFFFFF?text=T',
+                        desc: 'O Deus do Trovão de Asgard, buscando vingança contra Kratos pela morte de seus filhos e seu meio-irmão Baldur.'
+                    },
+                    {
+                        nome: 'Odin',
+                        img: 'https://placehold.co/60x60/483D8B/FFFFFF?text=O',
+                        desc: 'O Pai de Todos e Rei de Asgard, um deus manipulador e obcecado em prevenir sua morte profetizada no Ragnarök.'
+                    }
+                ]
+            }
+        ];
+
+        const dados_faq = [
+            {
+                pergunta: 'Preciso jogar os títulos anteriores para entender Ragnarök?',
+                resposta: 'É altamente recomendado jogar God of War (2018), pois Ragnarök é uma sequência direta. Um resumo dos eventos do jogo anterior está disponível no menu principal de Ragnarök.'
+            },
+            {
+                pergunta: 'God of War Ragnarök: Valhalla é gratuito?',
+                resposta: 'Sim. A DLC Valhalla é uma expansão de conteúdo gratuita para todos que possuem o jogo base God of War Ragnarök. Pode ser baixada diretamente da PlayStation Store.'
+            },
+            {
+                pergunta: 'Quais jogos da saga estão disponíveis no PC?',
+                resposta: 'Atualmente, God of War (2018) e God of War Ragnarök estão disponíveis para PC. Jogos mais antigos podem ser jogados via streaming no PlayStation Plus Premium.'
+            },
+            {
+                pergunta: 'Qual a ordem cronológica para jogar a saga?',
+                resposta: 'A sequência é: Ascension, Chains of Olympus, God of War (2005), Ghost of Sparta, God of War II, God of War III, God of War (2018) e Ragnarök.'
+            }
+        ];
+
+        const dados_linha_tempo = [
+            {
+                ano: "Pré-Saga",
+                titulo: "Ascension",
+                desc: "A origem da fúria de Kratos e sua primeira batalha contra as Fúrias.",
+                pos: "esquerda"
+            },
+            {
+                ano: "Pré-Saga",
+                titulo: "Chains of Olympus",
+                desc: "Kratos serve aos deuses e luta para salvar o Sol.",
+                pos: "direita"
+            },
+            {
+                ano: "Ano 10",
+                titulo: "God of War (2005)",
+                desc: "A vingança contra Ares e a ascensão de Kratos.",
+                pos: "esquerda"
+            },
+            {ano: "Ano 10+", titulo: "Ghost of Sparta", desc: "A busca por seu irmão perdido, Deimos.", pos: "direita"},
+            {
+                ano: "Ano 12",
+                titulo: "God of War II",
+                desc: "A traição de Zeus e a aliança com os Titãs.",
+                pos: "esquerda"
+            },
+            {
+                ano: "Ano 12+",
+                titulo: "God of War III",
+                desc: "A destruição do Olimpo e o fim da saga grega.",
+                pos: "direita"
+            },
+            {
+                ano: "Era Nórdica",
+                titulo: "God of War (2018)",
+                desc: "Kratos busca redenção e ensina seu filho a sobreviver.",
+                pos: "esquerda"
+            },
+            {
+                ano: "Fimbulwinter",
+                titulo: "Ragnarök",
+                desc: "O crepúsculo dos deuses e o destino de Kratos e Atreus.",
+                pos: "direita"
+            }
+        ];
+
+        // Função de Inicialização
+        function iniciar() {
+            configurar_secao_heroi();
+            renderizar_catalogo();
+            renderizar_faq();
+            renderizar_linha_tempo();
+            configurar_eventos();
+            revelar_elementos();
+        }
+
+        function configurar_secao_heroi() {
+            const container_heroi = $('#container_slide');
+            const conteudo_heroi = $('#conteudo_slide');
+
+            const dados_heroi = {
+                video_src: 'assets/img/live_ragnarok.mp4', // Caminho corrigido para o vídeo/animação de fundo
+                title: 'God of War Ragnarök',
+                subtitle: 'O Ragnarök está chegando. A jornada de Kratos e Atreus pelos Nove Reinos continua.'
+            };
+
+            const video_html = `<video class="slide" src="${dados_heroi.video_src}" autoplay loop muted playsinline></video>`;
+            container_heroi.html(video_html);
+            conteudo_heroi.html(`<div class="revelar visivel"><h1 class="fonte_cinzel display-3 text-white">${dados_heroi.title}</h1><p class="fs-4 text-light mt-3" style="max-width: 700px;">${dados_heroi.subtitle}</p></div>`);
+        }
+
+        function renderizar_catalogo() {
+            const container_catalogo = $('#catalogo .row');
+            dados_catalogo_jogos.forEach((jogo, indice) => {
+                const atraso = indice * 100;
+                const html_card = `
+                <div class="col-sm-6 col-md-4 col-lg-3 d-flex align-items-stretch revelar" style="transition-delay: ${atraso}ms;">
+                    <div class="card card_jogo h-100 w-100" data-bs-toggle="modal" data-bs-target="#modal_detalhes_jogo" data-game-index="${indice}">
+                        <img src="${jogo.img}" class="card-img-top" alt="${jogo.alt}">
+                        <div class="card-body">
+                            <h4 class="card-title">${jogo.titulo}</h4>
+                            <p class="card-text small">${jogo.desc}</p>
+                            <span class="fw-bold mt-auto"><i class="fa-brands fa-playstation me-2"></i>${jogo.preco}</span>
+                        </div>
+                    </div>
+                </div>`;
+                container_catalogo.append(html_card);
+            });
+        }
+
+        function renderizar_linha_tempo() {
+            const container = $('#container_linha_tempo');
+            dados_linha_tempo.forEach(item => {
+                const html = `
+                <div class="item_timeline ${item.pos} revelar">
+                    <div class="conteudo_timeline">
+                        <h3>${item.titulo}</h3>
+                        <h4>${item.ano}</h4>
+                        <p>${item.desc}</p>
+                    </div>
+                </div>`;
+                container.append(html);
+            });
+        }
+
+        function renderizar_faq() {
+            const container_faq = $('#acordeao_faq');
+            dados_faq.forEach((item, indice) => {
+                const html_faq = `
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-${indice}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${indice}" aria-expanded="false" aria-controls="collapse-${indice}">
+                            ${item.pergunta}
+                        </button>
+                    </h2>
+                    <div id="collapse-${indice}" class="accordion-collapse collapse" aria-labelledby="heading-${indice}" data-bs-parent="#acordeao_faq">
+                        <div class="accordion-body">
+                            ${item.resposta}
+                        </div>
+                    </div>
+                </div>`;
+                container_faq.append(html_faq);
+            });
+        }
+
+        function configurar_eventos() {
+            $(window).on('scroll', revelar_elementos);
+            $(window).on('scroll', function () {
+                const posicao_scroll = $(this).scrollTop();
+                const altura_cabecalho = $('#cabecalho_principal').outerHeight();
+                $('.nav-link').each(function () {
+                    const link_atual = $(this);
+                    const elemento_referencia = $(link_atual.attr("href"));
+                    if (elemento_referencia.length && elemento_referencia.position().top - altura_cabecalho <= posicao_scroll && elemento_referencia.position().top + elemento_referencia.height() > posicao_scroll) {
+                        $('.nav-link').removeClass("active");
+                        link_atual.addClass("active");
+                    } else {
+                        link_atual.removeClass("active");
+                    }
+                });
+            });
+
+            $('#botao_menu_mobile, #botao_fechar_menu, #menu_mobile .link_menu_mobile').on('click', () => $('#menu_mobile').toggleClass('visivel'));
+            $('#menu_mobile').on('click', e => {
+                if (e.target === e.currentTarget) $(e.currentTarget).removeClass('visivel');
+            });
+
+            $('#botao_icone_busca').on('click', function () {
+                $(this).addClass('d-none');
+                $('#container_barra_busca').removeClass('d-none').find('input').focus();
+            });
+            $('#botao_fechar_busca').on('click', () => {
+                $('#container_barra_busca').addClass('d-none');
+                $('#botao_icone_busca').removeClass('d-none');
+            });
+
+            const modal_autenticacao_instancia = new bootstrap.Modal($('#modal_autenticacao'));
+            $('#botao_login').on('click', () => {
+                $('#container_form_cadastro').addClass('d-none');
+                $('#container_form_login').removeClass('d-none');
+                modal_autenticacao_instancia.show();
+            });
+
+            $('#link_mostrar_cadastro').add('#link_mostrar_login').on('click', function (e) {
+                e.preventDefault();
+                const esta_mostrando_login = $(this).attr('id') === 'link_mostrar_login';
+                const form_mostrar = esta_mostrando_login ? '#container_form_login' : '#container_form_cadastro';
+                const form_esconder = esta_mostrando_login ? '#container_form_cadastro' : '#container_form_login';
+                $(form_esconder).fadeOut(200, () => $(form_mostrar).removeClass('d-none').fadeIn(200));
+            });
+
+            configurar_validacao_form();
+            lidar_submissao_form('#container_form_login form', modal_autenticacao_instancia);
+            lidar_submissao_form('#container_form_cadastro form', modal_autenticacao_instancia);
+
+            $('#botao_voltar_topo').on('click', e => {
+                e.preventDefault();
+                $('html, body').animate({scrollTop: 0}, 'slow');
+            });
+            $(window).on('scroll', () => {
+                if ($(this).scrollTop() > 300) $('#botao_voltar_topo').removeClass('d-none');
+                else $('#botao_voltar_topo').addClass('d-none');
+            });
+
+            $('#modal_detalhes_jogo').on('show.bs.modal', function (event) {
+                const botao = $(event.relatedTarget);
+                const indice_jogo = botao.data('game-index');
+                preencher_modal_jogo(indice_jogo);
+            });
+
+            $('#modal_detalhes_jogo').on('hidden.bs.modal', function () {
+                const video = $(this).find('video');
+                if (video.length) {
+                    video[0].pause();
+                }
+                $('#container_trailer').html('');
+            });
+        }
+
+        function preencher_modal_jogo(indice_jogo) {
+            const jogo = dados_catalogo_jogos[indice_jogo];
+            if (!jogo) return;
+
+            $('#modal_titulo_jogo').text(jogo.titulo);
+
+            const html_video = jogo.videoFile
+                ? `<video controls class="w-100 h-100" style="background-color: #000;"><source src="${jogo.videoFile}" type="video/mp4">Seu navegador não suporta o elemento de vídeo.</video>`
+                : '<div class="d-flex align-items-center justify-content-center h-100 bg-dark text-white-50">Vídeo indisponível.</div>';
+            $('#container_trailer').html(html_video);
+
+            $('#modal_sinopse_jogo').text(jogo.sinopseCompleta);
+
+            const container_arsenal = $('#modal_arsenal_jogo');
+            container_arsenal.empty();
+            if (jogo.arsenal.length > 0) {
+                jogo.arsenal.forEach(item => {
+                    container_arsenal.append(`<div class="card_item"><div class="icone_placeholder"><i class="${item.icone}"></i></div><div><h5>${item.nome}</h5><p>${item.descricao}</p></div></div>`);
+                });
+            } else {
+                container_arsenal.html('<p class="text-white-50">Informações sobre o arsenal indisponíveis.</p>');
+            }
+
+            const container_personagens = $('#modal_personagens_jogo');
+            container_personagens.empty();
+            if (jogo.personagens.length > 0) {
+                jogo.personagens.forEach(personagem => {
+                    container_personagens.append(`<div class="card_item"><img src="${personagem.img}" alt="${personagem.nome}"><div><h5>${personagem.nome}</h5><p>${personagem.desc}</p></div></div>`);
+                });
+            } else {
+                container_personagens.html('<p class="text-white-50">Informações sobre personagens indisponíveis.</p>');
+            }
+
+            const primeira_aba = new bootstrap.Tab($('#aba_sinopse'));
+            primeira_aba.show();
+        }
+
+        function revelar_elementos() {
+            const altura_janela = $(window).height();
+            const scroll_topo_janela = $(window).scrollTop();
+            $('.revelar').each(function () {
+                const topo_elemento = $(this).offset().top;
+                if (topo_elemento < altura_janela + scroll_topo_janela - 50) {
+                    $(this).addClass('visivel');
+                }
+            });
+        }
+
+        function configurar_validacao_form() {
+            const formularios = $('.needs-validation');
+            formularios.on('submit', function (event) {
+                const formulario = $(this);
+                if (!formulario[0].checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                const senha = formulario.find('#cadastro_senha');
+                const confirmar_senha = formulario.find('#cadastro_confirma_senha');
+                if (confirmar_senha.length > 0 && senha.val() !== confirmar_senha.val()) {
+                    confirmar_senha[0].setCustomValidity('Invalid');
+                } else if (confirmar_senha.length > 0) {
+                    confirmar_senha[0].setCustomValidity('');
+                }
+
+                formulario.addClass('was-validated');
+            });
+        }
+
+        function lidar_submissao_form(seletor_form, instancia_modal) {
+            $(seletor_form).on('submit', function (e) {
+                e.preventDefault();
+                if (!this.checkValidity()) {
+                    e.stopPropagation();
+                    return;
+                }
+                ;
+
+                const container_form = $(this).closest('.modal-body > div');
+                const html_original = container_form.html();
+                const eh_login = seletor_form.includes('login');
+                const msg_sucesso = eh_login ? "Bem-vindo de volta, guerreiro." : "Você agora é parte do clã.";
+
+                const botao = $(this).find('button[type="submit"]');
+                botao.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Carregando...').prop('disabled', true);
+
+                setTimeout(() => {
+                    container_form.html(`<div class="text-center p-4 d-flex flex-column align-items-center justify-content-center" style="min-height: 300px;"><div class="display-3 text-success mb-3" style="animation: pulse-success 1s ease-in-out;"><i class="fa-solid fa-shield-halved"></i></div><h4 class="text-success fonte_cinzel">${msg_sucesso}</h4></div>`);
+                    setTimeout(() => {
+                        instancia_modal.hide();
+                        setTimeout(() => {
+                            container_form.html(html_original);
+                            configurar_validacao_form();
+                        }, 500);
+                    }, 2000);
+                }, 1500);
+            });
+        }
+
+        iniciar();
+    });
+</script>
+</body>
+</html>
+
